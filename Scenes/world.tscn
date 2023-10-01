@@ -1,0 +1,141 @@
+[gd_scene load_steps=16 format=3 uid="uid://ci8o02nhjmtrv"]
+
+[ext_resource type="Script" path="res://Scripts/world.gd" id="1_a3t3h"]
+[ext_resource type="PackedScene" uid="uid://4xr4s3a7sxpo" path="res://Scenes/Player.tscn" id="1_rh7ys"]
+[ext_resource type="Texture2D" uid="uid://bddr1u6kk7iqg" path="res://Buttons/Righ_Arrow.png" id="2_fot87"]
+[ext_resource type="Texture2D" uid="uid://qe7qiawapoho" path="res://Materials/Wood_Planks.png" id="2_vuyap"]
+[ext_resource type="Texture2D" uid="uid://cowkx61n0vuu2" path="res://Buttons/Left_Arrow.png" id="3_2pkbx"]
+[ext_resource type="Texture2D" uid="uid://gsodtkatnyii" path="res://Buttons/Up_Arrow.png" id="4_ti4s7"]
+[ext_resource type="Script" path="res://Scripts/FPSCounter.gd" id="5_uhxld"]
+[ext_resource type="Texture2D" uid="uid://cnl1n2nqchxcc" path="res://Materials/PurpleBricks.png" id="7_3xo7a"]
+[ext_resource type="Texture2D" uid="uid://c7lq3sf4j0382" path="res://Materials/Window.png" id="9_8yq0s"]
+[ext_resource type="PackedScene" uid="uid://dqls41ixt6eof" path="res://Scenes/blue_slime.tscn" id="10_chwoq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1jvy8"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3vuu8"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t0uok"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvqlo"]
+size = Vector2(1150, 38.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adto2"]
+size = Vector2(33, 609)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_a3t3h")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_vuyap")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = 4.0
+offset_right = 1148.0
+offset_bottom = 650.0
+
+[node name="buttonRight" type="TouchScreenButton" parent="Control"]
+position = Vector2(222, 450)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("2_fot87")
+texture_pressed = ExtResource("2_fot87")
+shape = SubResource("RectangleShape2D_1jvy8")
+action = "ui_right"
+
+[node name="buttonLeft" type="TouchScreenButton" parent="Control"]
+position = Vector2(58, 453)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("3_2pkbx")
+texture_pressed = ExtResource("3_2pkbx")
+shape = SubResource("RectangleShape2D_3vuu8")
+action = "ui_left"
+
+[node name="buttonJump" type="TouchScreenButton" parent="Control"]
+position = Vector2(943, 451)
+scale = Vector2(4, 4)
+texture_normal = ExtResource("4_ti4s7")
+texture_pressed = ExtResource("4_ti4s7")
+shape = SubResource("RectangleShape2D_t0uok")
+action = "ui_accept"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 629.25)
+shape = SubResource("RectangleShape2D_dvqlo")
+
+[node name="FloorTexture" type="TextureRect" parent="StaticBody2D/Floor"]
+offset_left = -576.0
+offset_top = -21.25
+offset_right = 575.0
+offset_bottom = 17.75
+texture = ExtResource("7_3xo7a")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Cealing" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(576, 20)
+shape = SubResource("RectangleShape2D_dvqlo")
+
+[node name="Cealing" type="TextureRect" parent="StaticBody2D/Cealing"]
+offset_left = -576.0
+offset_top = -20.0
+offset_right = 575.0
+offset_bottom = 19.0
+texture = ExtResource("7_3xo7a")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="RigthWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1134.5, 305.5)
+shape = SubResource("RectangleShape2D_adto2")
+
+[node name="RightWall" type="TextureRect" parent="StaticBody2D/RigthWall"]
+offset_left = -16.0
+offset_top = -266.0
+offset_right = 17.0
+offset_bottom = 304.0
+texture = ExtResource("7_3xo7a")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="LeftWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16, 305)
+shape = SubResource("RectangleShape2D_adto2")
+
+[node name="LeftWall" type="TextureRect" parent="StaticBody2D/LeftWall"]
+offset_left = -16.0
+offset_top = -265.5
+offset_right = 17.0
+offset_bottom = 304.5
+texture = ExtResource("7_3xo7a")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="FPSCounter" type="Label" parent="."]
+offset_left = 2.0
+offset_right = 70.0
+offset_bottom = 38.0
+script = ExtResource("5_uhxld")
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(809, 178)
+scale = Vector2(2, 2.5)
+texture = ExtResource("9_8yq0s")
+
+[node name="BlueSlime" parent="." instance=ExtResource("10_chwoq")]
+position = Vector2(874, 522)
+
+[node name="Player" parent="." instance=ExtResource("1_rh7ys")]
+position = Vector2(446, 530)
+scale = Vector2(2, 2)
