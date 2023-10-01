@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://4xr4s3a7sxpo"]
+[gd_scene load_steps=9 format=3 uid="uid://4xr4s3a7sxpo"]
 
 [ext_resource type="Texture2D" uid="uid://dpblrhr2xi88j" path="res://Characters/PixelKnight1-Sheet.png" id="1_3v2b4"]
 [ext_resource type="Script" path="res://Scripts/main_ch.gd" id="1_t5n47"]
@@ -57,6 +57,12 @@ _data = {
 "RESET": SubResource("Animation_ia45a")
 }
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_da8ml"]
+b = Vector2(40, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_4fr4g"]
+b = Vector2(-40, 0)
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_t5n47")
@@ -74,3 +80,16 @@ autoplay = "Idle"
 libraries = {
 "": SubResource("AnimationLibrary_s4tha")
 }
+
+[node name="HitRight" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitRight"]
+shape = SubResource("SegmentShape2D_da8ml")
+
+[node name="HitLeft" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitLeft"]
+shape = SubResource("SegmentShape2D_4fr4g")
+
+[connection signal="body_entered" from="HitRight" to="." method="_on_hit_right_body_entered"]
+[connection signal="body_entered" from="HitLeft" to="." method="_on_hit_left_body_entered"]

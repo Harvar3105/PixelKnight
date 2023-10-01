@@ -6,10 +6,10 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const SPEED = 100
 var health = 10
+var damage = 5
+var wanderState = true
 
 var targetEntity = null
-
-var wanderState = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +25,6 @@ func _physics_process(delta):
 	
 	if !wanderState:
 		var direction = targetEntity.position.x - position.x
-		print(direction)
 		if (direction > 0):
 			velocity.x = SPEED * 1
 			get_node("CollisionShape2D/Sprite2D").flip_h = true

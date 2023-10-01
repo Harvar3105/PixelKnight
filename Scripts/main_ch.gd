@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+var health = 100
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -29,5 +30,25 @@ func _physics_process(delta):
 	elif direction == 1:
 		get_node("CollisionShape2D/Sprite2D").flip_h = false
 	
+	die()
+	
 	move_and_slide()
 
+
+
+func _on_hit_right_body_entered(body):
+	pass # Replace with function body.
+
+
+func _on_hit_left_body_entered(body):
+	pass # Replace with function body.
+	
+func get_health():
+	return health
+
+func die():
+	if (health <= 0):
+		queue_free();
+
+func get_dmg(amount):
+	health -= amount
