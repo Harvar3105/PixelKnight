@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/blue_slime.gd" id="1_6rxn2"]
 [ext_resource type="Texture2D" uid="uid://ty6myklcc2b2" path="res://Characters/Slime_Blue-Sheet.png" id="1_ph8j2"]
-[ext_resource type="Script" path="res://Scripts/blue_slime-damage.gd" id="3_wmvdv"]
+[ext_resource type="Script" path="res://Scripts/AlertDMGBlueSlime.gd" id="3_ixhil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jr478"]
 size = Vector2(46, 40)
@@ -64,8 +64,8 @@ b = Vector2(-100, 0)
 a = Vector2(100, 0)
 b = Vector2(0, 0)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p5vv2"]
-size = Vector2(60, 60)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfd5"]
+size = Vector2(53, 48)
 
 [node name="BlueSlime" type="CharacterBody2D"]
 script = ExtResource("1_6rxn2")
@@ -95,11 +95,11 @@ shape = SubResource("SegmentShape2D_rq5a7")
 shape = SubResource("SegmentShape2D_shwhd")
 
 [node name="AlertDMG" type="Area2D" parent="."]
-script = ExtResource("3_wmvdv")
+script = ExtResource("3_ixhil")
 
 [node name="RangeDMG" type="CollisionShape2D" parent="AlertDMG"]
-position = Vector2(-0.5, 0)
-shape = SubResource("RectangleShape2D_p5vv2")
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_5sfd5")
 
 [connection signal="body_entered" from="AlertLeft" to="." method="_on_alert_left_body_entered"]
 [connection signal="body_entered" from="AlertRight" to="." method="_on_alert_right_body_entered"]

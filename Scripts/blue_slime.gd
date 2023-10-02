@@ -6,7 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 const SPEED = 100
 var health = 10
-var damage = 5
+var damage = 10
 var wanderState = true
 
 var targetEntity = null
@@ -46,4 +46,5 @@ func _on_alert_right_body_entered(body):
 		targetEntity = body
 		wanderState = false
 
-
+func get_dmg():
+	return damage
