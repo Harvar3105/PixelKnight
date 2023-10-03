@@ -3,6 +3,7 @@ extends CharacterBody2D
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var idle_anim = get_node("CollisionShape2D/Animation")
+@onready var healthBar = get_node("HealthBar")
 
 const SPEED = 100
 var health = 10
@@ -21,6 +22,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	if health <= 0:
+		healthBar.queue_free()
 		queue_free()
 	
 	if !wanderState:
@@ -32,7 +34,13 @@ func _physics_process(delta):
 			velocity.x = SPEED * -1
 			get_node("CollisionShape2D/Sprite2D").flip_h = false
 	
+	change_health_bar_value(healthBar)
+	
 	move_and_slide()
+
+func change_health_bar_value(bar):
+	healthBar.value = health
+
 
 
 func _on_alert_left_body_entered(body):
@@ -48,3 +56,6 @@ func _on_alert_right_body_entered(body):
 
 func get_dmg():
 	return damage
+	
+func recieve_dmg(amount):
+	health -= amount

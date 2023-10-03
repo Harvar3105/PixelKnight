@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dqls41ixt6eof"]
+[gd_scene load_steps=12 format=3 uid="uid://dqls41ixt6eof"]
 
 [ext_resource type="Script" path="res://Scripts/blue_slime.gd" id="1_6rxn2"]
 [ext_resource type="Texture2D" uid="uid://ty6myklcc2b2" path="res://Characters/Slime_Blue-Sheet.png" id="1_ph8j2"]
 [ext_resource type="Script" path="res://Scripts/AlertDMGBlueSlime.gd" id="3_ixhil"]
+[ext_resource type="Theme" uid="uid://dmiibo8sbj620" path="res://Themes/SlimeHealthBar.tres" id="4_c17tu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jr478"]
 size = Vector2(46, 40)
@@ -100,6 +101,17 @@ script = ExtResource("3_ixhil")
 [node name="RangeDMG" type="CollisionShape2D" parent="AlertDMG"]
 position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_5sfd5")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -40.0
+offset_top = -42.0
+offset_right = 41.0
+offset_bottom = -30.0
+theme = ExtResource("4_c17tu")
+max_value = 10.0
+step = 1.0
+value = 5.0
+show_percentage = false
 
 [connection signal="body_entered" from="AlertLeft" to="." method="_on_alert_left_body_entered"]
 [connection signal="body_entered" from="AlertRight" to="." method="_on_alert_right_body_entered"]
