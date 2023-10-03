@@ -3,14 +3,14 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
+const DMG = 5
 var health = 100
-var hitRight = true
 
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var idleAnim = get_node("CollisionShape2D/Idle")
+@onready var dmgArea = get_node("AlertDMG/AreaDMG")
 
 func _physics_process(delta):
 	idleAnim.play("Idle")
@@ -28,11 +28,12 @@ func _physics_process(delta):
 	
 	if direction == -1:
 		get_node("CollisionShape2D/Sprite2D").flip_h = true
-		hitRight = true
+		dmgArea.position.x = -32
 
 	elif direction == 1:
 		get_node("CollisionShape2D/Sprite2D").flip_h = false
-		hitRight = false
+		dmgArea.position.x = 32
+
 	
 	die()
 	
@@ -40,15 +41,11 @@ func _physics_process(delta):
 
 
 
-func _on_hit_right_body_entered(body):
-	pass
-
-
-func _on_hit_left_body_entered(body):
-	pass 
-	
 func get_health():
 	return health
+
+func get_dmg():
+	return DMG
 
 func die():
 	if (health <= 0):
@@ -56,5 +53,4 @@ func die():
 
 func recieve_dmg(amount):
 	health -= amount
-
 

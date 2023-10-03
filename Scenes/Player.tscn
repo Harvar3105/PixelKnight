@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dpblrhr2xi88j" path="res://Characters/PixelKnight1-Sheet.png" id="1_3v2b4"]
 [ext_resource type="Script" path="res://Scripts/main_ch.gd" id="1_t5n47"]
+[ext_resource type="Script" path="res://Scripts/AlertDMGPlayer.gd" id="3_qfb7g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04hi0"]
 size = Vector2(28, 36)
@@ -57,11 +58,8 @@ _data = {
 "RESET": SubResource("Animation_ia45a")
 }
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_da8ml"]
-b = Vector2(40, 0)
-
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_4fr4g"]
-b = Vector2(-40, 0)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wkxka"]
+size = Vector2(36, 36)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -81,15 +79,18 @@ libraries = {
 "": SubResource("AnimationLibrary_s4tha")
 }
 
-[node name="HitRight" type="Area2D" parent="."]
+[node name="AlertDMG" type="Area2D" parent="."]
+script = ExtResource("3_qfb7g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitRight"]
-shape = SubResource("SegmentShape2D_da8ml")
+[node name="AreaDMG" type="CollisionShape2D" parent="AlertDMG"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_wkxka")
 
-[node name="HitLeft" type="Area2D" parent="."]
+[node name="Panel" type="Panel" parent="AlertDMG/AreaDMG"]
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitLeft"]
-shape = SubResource("SegmentShape2D_4fr4g")
-
-[connection signal="body_entered" from="HitRight" to="." method="_on_hit_right_body_entered"]
-[connection signal="body_entered" from="HitLeft" to="." method="_on_hit_left_body_entered"]
+[connection signal="body_entered" from="AlertDMG" to="AlertDMG" method="_on_body_entered"]
+[connection signal="body_exited" from="AlertDMG" to="AlertDMG" method="_on_body_exited"]

@@ -124,6 +124,10 @@ texture_pressed = ExtResource("4_ti4s7")
 shape = SubResource("RectangleShape2D_t0uok")
 action = "ui_accept"
 
+[node name="Hit" type="TouchScreenButton" parent="Control"]
+position = Vector2(199, 375)
+action = "ui_hit"
+
 [node name="HealthBar" type="ProgressBar" parent="Control"]
 layout_mode = 0
 offset_left = 29.0
