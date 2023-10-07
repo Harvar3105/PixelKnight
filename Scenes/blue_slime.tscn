@@ -59,10 +59,10 @@ _data = {
 }
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rq5a7"]
-b = Vector2(-100, 0)
+b = Vector2(-120, 0)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_shwhd"]
-a = Vector2(100, 0)
+a = Vector2(120, 0)
 b = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5sfd5"]

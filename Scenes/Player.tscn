@@ -1,48 +1,84 @@
-[gd_scene load_steps=9 format=3 uid="uid://4xr4s3a7sxpo"]
+[gd_scene load_steps=11 format=3 uid="uid://4xr4s3a7sxpo"]
 
-[ext_resource type="Texture2D" uid="uid://dpblrhr2xi88j" path="res://Characters/PixelKnight1-Sheet.png" id="1_3v2b4"]
 [ext_resource type="Script" path="res://Scripts/main_ch.gd" id="1_t5n47"]
+[ext_resource type="Texture2D" uid="uid://b7uamyt4jnnhh" path="res://Items/IronHelmet-Sheet.png" id="2_mrdl2"]
+[ext_resource type="Texture2D" uid="uid://clq5rty2medp0" path="res://Items/IronBody-Sheet.png" id="3_kd2y1"]
 [ext_resource type="Script" path="res://Scripts/AlertDMGPlayer.gd" id="3_qfb7g"]
+[ext_resource type="Texture2D" uid="uid://cb0b17fns8w0c" path="res://Items/IronSword.png" id="4_bqk0l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04hi0"]
-size = Vector2(28, 36)
+size = Vector2(44, 68)
 
-[sub_resource type="Animation" id="Animation_sulro"]
+[sub_resource type="Animation" id="Animation_hru1y"]
 resource_name = "Idle"
-length = 1.6
 loop_mode = 1
-step = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/path = NodePath("Helmet:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [ExtResource("1_3v2b4")]
+"values": []
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/path = NodePath("Helmet:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2, 1]
+"values": [0, 1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Body:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Helmet:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, -12), Vector2(0, -10)]
 }
 
-[sub_resource type="Animation" id="Animation_ia45a"]
+[sub_resource type="Animation" id="Animation_6wc2b"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("Helmet:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -51,15 +87,39 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Helmet:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_s4tha"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uyssf"]
 _data = {
-"Idle": SubResource("Animation_sulro"),
-"RESET": SubResource("Animation_ia45a")
+"Idle": SubResource("Animation_hru1y"),
+"RESET": SubResource("Animation_6wc2b")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wkxka"]
-size = Vector2(36, 36)
+size = Vector2(61, 68)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -68,29 +128,31 @@ script = ExtResource("1_t5n47")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_04hi0")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-position = Vector2(4, 9)
-texture = ExtResource("1_3v2b4")
-hframes = 3
+[node name="Helmet" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(0, -12)
+texture = ExtResource("2_mrdl2")
+hframes = 2
 
-[node name="Idle" type="AnimationPlayer" parent="CollisionShape2D"]
-autoplay = "Idle"
+[node name="Body" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(0, 22)
+texture = ExtResource("3_kd2y1")
+hframes = 2
+
+[node name="Sword" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(11, 22)
+texture = ExtResource("4_bqk0l")
+
+[node name="PlayerAnimation" type="AnimationPlayer" parent="CollisionShape2D"]
 libraries = {
-"": SubResource("AnimationLibrary_s4tha")
+"": SubResource("AnimationLibrary_uyssf")
 }
 
 [node name="AlertDMG" type="Area2D" parent="."]
 script = ExtResource("3_qfb7g")
 
 [node name="AreaDMG" type="CollisionShape2D" parent="AlertDMG"]
-position = Vector2(32, 0)
+position = Vector2(52.5, 0)
 shape = SubResource("RectangleShape2D_wkxka")
-
-[node name="Panel" type="Panel" parent="AlertDMG/AreaDMG"]
-offset_left = -18.0
-offset_top = -18.0
-offset_right = 18.0
-offset_bottom = 18.0
 
 [connection signal="body_entered" from="AlertDMG" to="AlertDMG" method="_on_body_entered"]
 [connection signal="body_exited" from="AlertDMG" to="AlertDMG" method="_on_body_exited"]
