@@ -29,7 +29,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Quit" type="TouchScreenButton" parent="CanvasLayer/CenterContainer"]
-visible = false
 position = Vector2(1, 194)
 scale = Vector2(3, 3)
 texture_normal = ExtResource("3_4tdyy")
@@ -37,7 +36,6 @@ texture_pressed = ExtResource("3_4tdyy")
 shape = SubResource("RectangleShape2D_83vji")
 
 [node name="Play" type="TouchScreenButton" parent="CanvasLayer/CenterContainer"]
-visible = false
 position = Vector2(1, 1)
 scale = Vector2(3, 2.984)
 texture_normal = ExtResource("2_fbiul")
