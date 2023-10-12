@@ -4,28 +4,45 @@
 [ext_resource type="Texture2D" uid="uid://cicseekdrj22t" path="res://Buttons/PlayButton128.png" id="2_fbiul"]
 [ext_resource type="Texture2D" uid="uid://r8kaeel5pq44" path="res://Buttons/QuitButton128.png" id="3_4tdyy"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0y3l"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83vji"]
 size = Vector2(128, 64)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_83vji"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n0y3l"]
 size = Vector2(128, 64)
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_3i8ut")
 
-[node name="Play" type="TouchScreenButton" parent="."]
-position = Vector2(400, 100)
-scale = Vector2(3, 2.984)
-texture_normal = ExtResource("2_fbiul")
-texture_pressed = ExtResource("2_fbiul")
-shape = SubResource("RectangleShape2D_n0y3l")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Quit" type="TouchScreenButton" parent="."]
-position = Vector2(400, 300)
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -195.0
+offset_right = 198.0
+offset_bottom = 193.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Quit" type="TouchScreenButton" parent="CanvasLayer/CenterContainer"]
+visible = false
+position = Vector2(1, 194)
 scale = Vector2(3, 3)
 texture_normal = ExtResource("3_4tdyy")
 texture_pressed = ExtResource("3_4tdyy")
 shape = SubResource("RectangleShape2D_83vji")
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[node name="Play" type="TouchScreenButton" parent="CanvasLayer/CenterContainer"]
+visible = false
+position = Vector2(1, 1)
+scale = Vector2(3, 2.984)
+texture_normal = ExtResource("2_fbiul")
+texture_pressed = ExtResource("2_fbiul")
+shape = SubResource("RectangleShape2D_n0y3l")
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/Play" to="." method="_on_play_pressed"]

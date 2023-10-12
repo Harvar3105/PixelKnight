@@ -1,9 +1,9 @@
 extends Node2D
 
-@onready var healthBar = get_node("CanvasLayer/Control/HealthBar")
-@onready var playerHPLabel = get_node("CanvasLayer/Control/HealthBar/PlayerHP")
-@onready var expBar = get_node("CanvasLayer/Control/LevelUpBar")
-@onready var playerLevelLabel = get_node("CanvasLayer/Control/LevelFont/Label")
+@onready var healthBar = get_node("CanvasLayer/TopLeftIndicators/HealthBar")
+@onready var playerHPLabel = get_node("CanvasLayer/TopLeftIndicators/HealthBar/PlayerHP")
+@onready var expBar = get_node("CanvasLayer/TopLeftIndicators/LevelUpBar")
+@onready var playerLevelLabel = get_node("CanvasLayer/TopLeftIndicators/LevelFont/Label")
 @onready var player = get_node("Player")
 
 # Called when the node enters the scene tree for the first time.
