@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://dmiibo8sbj620" path="res://Themes/SlimeHealthBar.tres" id="4_c17tu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jr478"]
-size = Vector2(46, 40)
+size = Vector2(45, 38)
 
 [sub_resource type="Animation" id="Animation_tvypg"]
 resource_name = "Idle"
@@ -99,7 +99,6 @@ shape = SubResource("SegmentShape2D_shwhd")
 script = ExtResource("3_ixhil")
 
 [node name="RangeDMG" type="CollisionShape2D" parent="AlertDMG"]
-position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_5sfd5")
 
 [node name="HealthBar" type="ProgressBar" parent="."]
