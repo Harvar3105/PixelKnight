@@ -1,0 +1,113 @@
+[gd_scene load_steps=8 format=3 uid="uid://cu42p5iq5tka6"]
+
+[ext_resource type="Texture2D" uid="uid://qe7qiawapoho" path="res://Materials/Wood_Planks.png" id="1_h731q"]
+[ext_resource type="Texture2D" uid="uid://cnl1n2nqchxcc" path="res://Materials/PurpleBricks.png" id="2_ou4o2"]
+[ext_resource type="Texture2D" uid="uid://c7lq3sf4j0382" path="res://Materials/Window.png" id="3_rbqkf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31peh"]
+size = Vector2(1200, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dswwd"]
+size = Vector2(40, 650)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n84bw"]
+size = Vector2(1200, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6gaat"]
+size = Vector2(40, 650)
+
+[node name="Level_Test" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -811.0
+offset_top = -413.0
+offset_right = 2617.0
+offset_bottom = 897.0
+texture = ExtResource("1_h731q")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Floor" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(601, 630)
+shape = SubResource("RectangleShape2D_31peh")
+
+[node name="FloorTexture" type="TextureRect" parent="StaticBody2D/Floor"]
+offset_left = -576.0
+offset_top = -19.0
+offset_right = 599.0
+offset_bottom = 20.0
+texture = ExtResource("2_ou4o2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Floor2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1765, 630)
+shape = SubResource("RectangleShape2D_31peh")
+
+[node name="FloorTexture" type="TextureRect" parent="StaticBody2D/Floor2"]
+offset_left = -600.0
+offset_top = -19.0
+offset_right = 599.0
+offset_bottom = 19.0
+texture = ExtResource("2_ou4o2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="LeftWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(16, 323)
+shape = SubResource("RectangleShape2D_dswwd")
+
+[node name="LeftWallTexture" type="TextureRect" parent="StaticBody2D/LeftWall"]
+offset_left = -19.0
+offset_top = -323.0
+offset_right = 20.0
+offset_bottom = 324.0
+texture = ExtResource("2_ou4o2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Cealing" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(598, 20)
+shape = SubResource("RectangleShape2D_n84bw")
+
+[node name="CealingTexture" type="TextureRect" parent="StaticBody2D/Cealing"]
+offset_left = -601.0
+offset_top = -20.0
+offset_right = 600.0
+offset_bottom = 20.0
+texture = ExtResource("2_ou4o2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Cealing2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1753, 20)
+shape = SubResource("RectangleShape2D_n84bw")
+
+[node name="CealingTexture" type="TextureRect" parent="StaticBody2D/Cealing2"]
+offset_left = -601.0
+offset_top = -20.0
+offset_right = 600.0
+offset_bottom = 20.0
+texture = ExtResource("2_ou4o2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="RightWall" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2330, 326)
+shape = SubResource("RectangleShape2D_6gaat")
+
+[node name="RightWallTexture" type="TextureRect" parent="StaticBody2D/RightWall"]
+offset_left = -19.0
+offset_top = -324.0
+offset_right = 21.0
+offset_bottom = 325.0
+texture = ExtResource("2_ou4o2")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(809, 178)
+scale = Vector2(2, 2.5)
+texture = ExtResource("3_rbqkf")
