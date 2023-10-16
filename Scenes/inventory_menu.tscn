@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhhc5c1evrb1y"]
+
+[ext_resource type="Script" path="res://Scripts/InventoryMenu.gd" id="1_ry0i3"]
+[ext_resource type="Script" path="res://Scripts/InventoryGridContainer.gd" id="2_6ydrt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4yrs6"]
+size = Vector2(220, 120)
+
+[node name="InventoryMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ry0i3")
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 100.0
+offset_right = 1090.0
+offset_bottom = 500.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("2_6ydrt")
+
+[node name="Panel" type="Panel" parent="ScrollContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(660, 400)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -850.0
+offset_top = -220.0
+offset_right = -184.0
+offset_bottom = -100.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="InfoInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
+
+[node name="ItemsInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
+
+[node name="CloseInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
+position = Vector2(556, 60)
+shape = SubResource("RectangleShape2D_4yrs6")
+
+[node name="Panel" type="Panel" parent="HBoxContainer/CloseInventoryButton"]
+offset_left = -110.0
+offset_top = -60.0
+offset_right = 110.0
+offset_bottom = 60.0
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(666, 120)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 100.0
+offset_right = 430.0
+offset_bottom = 620.0
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(250, 520)
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/CloseInventoryButton" to="." method="_on_close_inventory_button_pressed"]

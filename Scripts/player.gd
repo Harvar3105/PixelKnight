@@ -8,6 +8,7 @@ var HEALTH = 100
 var LEVEL = 0
 var EXP = 0
 var MAX_EXP_FOR_LVL_UP = 100
+var INVENTORY_CAPACITY = 10
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -47,13 +48,12 @@ func _physics_process(delta):
 		dmgArea.position.x = 32
 	
 	die()
-	level_up()
 	
 	move_and_slide()
 
 func level_up():
 	if (EXP >= MAX_EXP_FOR_LVL_UP):
-		EXP = 0
+		EXP -= MAX_EXP_FOR_LVL_UP
 		MAX_EXP_FOR_LVL_UP = round(MAX_EXP_FOR_LVL_UP * 1.3)
 		LEVEL += 1
 
@@ -81,4 +81,10 @@ func recieve_dmg(amount):
 
 func recieve_exp(amount):
 	EXP += amount
+	level_up()
 
+func recieve_hp(amount):
+	if ((HEALTH + amount) >= 100):
+		HEALTH = 100
+	else:
+		HEALTH += amount

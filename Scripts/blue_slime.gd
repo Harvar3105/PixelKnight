@@ -6,7 +6,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var healthBar = get_node("HealthBar")
 
 const SPEED = 100
-const EXP = 10
+const EXP = 125
 var health = 10
 var damage = 10
 var wanderState = true

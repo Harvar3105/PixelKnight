@@ -3,7 +3,7 @@ extends Label
 var LEVEL
 
 func _process(delta):
-	text = str(LEVEL)
+	text = LEVEL
 
 func set_level(amount):
-	LEVEL = amount
+	LEVEL = str(amount)

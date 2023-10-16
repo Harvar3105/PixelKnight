@@ -7,6 +7,7 @@ extends Node2D
 @onready var playerLevelLabel = get_node("ControlLayout/TopLeftIndicators/LevelFont/Label")
 @onready var player = get_node("Player")
 @onready var pauseMenu = get_node("ControlLayout/PauseMenu")
+@onready var inventoryMenu = get_node("ControlLayout/InventoryMenu")
 
 
 func _ready():
@@ -18,6 +19,8 @@ func _process(delta):
 	change_exp_bar_value()
 	if Input.is_action_pressed("ui_pause"):
 		pause_game()
+	if Input.is_action_pressed("ui_inventory"):
+		open_inventory()
 
 
 func change_health_bar_value():
@@ -31,4 +34,8 @@ func change_exp_bar_value():
 
 func pause_game():
 	pauseMenu.set_visible(true)
+	get_tree().paused = true
+
+func open_inventory():
+	inventoryMenu.set_visible(true)
 	get_tree().paused = true
