@@ -8,3 +8,4 @@ func generate_items(amount):
 		var cell = buttonTemplate.instantiate()
 		cell.set_name("InventoryButton" + str(num))
 		add_child(cell)
+

@@ -24,7 +24,6 @@ offset_top = -413.0
 offset_right = 2617.0
 offset_bottom = 897.0
 texture = ExtResource("1_h731q")
-expand_mode = 1
 stretch_mode = 1
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

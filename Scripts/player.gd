@@ -9,6 +9,8 @@ var LEVEL = 0
 var EXP = 0
 var MAX_EXP_FOR_LVL_UP = 100
 var INVENTORY_CAPACITY = 10
+var INVENTORY = []
+var EQUIPMENT = { "helmet": null, "armor": null, "weapon": null}
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -18,6 +20,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var helmet = $"CollisionShape2D/Helmet"
 @onready var body = $"CollisionShape2D/Body"
 @onready var weapon = $"CollisionShape2D/Sword"
+
+func _ready():
+	INVENTORY.resize(INVENTORY_CAPACITY)
 
 func _physics_process(delta):
 	animations.play("Idle")
@@ -88,3 +93,7 @@ func recieve_hp(amount):
 		HEALTH = 100
 	else:
 		HEALTH += amount
+
+func change_inventory_size(amount):
+	INVENTORY_CAPACITY = amount
+	INVENTORY.resize(amount)

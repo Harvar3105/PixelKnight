@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhhc5c1evrb1y"]
+[gd_scene load_steps=9 format=3 uid="uid://bhhc5c1evrb1y"]
 
 [ext_resource type="Script" path="res://Scripts/InventoryMenu.gd" id="1_ry0i3"]
 [ext_resource type="Script" path="res://Scripts/InventoryGridContainer.gd" id="2_6ydrt"]
+[ext_resource type="Texture2D" uid="uid://doy2gp68kttpw" path="res://Buttons/InventoryCloseButton.png" id="3_3jfos"]
+[ext_resource type="Texture2D" uid="uid://4ljkbaspjtly" path="res://Buttons/InfoInventoryButton.png" id="3_bm1yb"]
+[ext_resource type="Texture2D" uid="uid://bar3m7x5h0afs" path="res://Buttons/ItemsInventoryButton.png" id="3_xbrsx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iuyel"]
+size = Vector2(110, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7p8dj"]
+size = Vector2(110, 60)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4yrs6"]
-size = Vector2(220, 120)
+size = Vector2(110, 60)
 
 [node name="InventoryMenu" type="Control"]
 process_mode = 2
@@ -23,6 +32,14 @@ grow_vertical = 2
 script = ExtResource("1_ry0i3")
 metadata/_edit_use_anchors_ = true
 
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(666, 400)
+layout_mode = 2
+offset_left = 430.0
+offset_top = 100.0
+offset_right = 1096.0
+offset_bottom = 500.0
+
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0
 offset_left = 430.0
@@ -36,11 +53,6 @@ vertical_scroll_mode = 3
 layout_mode = 2
 columns = 5
 script = ExtResource("2_6ydrt")
-
-[node name="Panel" type="Panel" parent="ScrollContainer/GridContainer"]
-visible = false
-custom_minimum_size = Vector2(660, 400)
-layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -56,23 +68,29 @@ offset_bottom = -100.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="InfoInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
-
-[node name="ItemsInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
-
-[node name="CloseInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
-position = Vector2(556, 60)
-shape = SubResource("RectangleShape2D_4yrs6")
-
-[node name="Panel" type="Panel" parent="HBoxContainer/CloseInventoryButton"]
-offset_left = -110.0
-offset_top = -60.0
-offset_right = 110.0
-offset_bottom = 60.0
-
 [node name="Panel" type="Panel" parent="HBoxContainer"]
 custom_minimum_size = Vector2(666, 120)
 layout_mode = 2
+
+[node name="InfoInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_bm1yb")
+texture_pressed = ExtResource("3_bm1yb")
+shape = SubResource("RectangleShape2D_iuyel")
+
+[node name="ItemsInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
+position = Vector2(223, 0)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_xbrsx")
+texture_pressed = ExtResource("3_xbrsx")
+shape = SubResource("RectangleShape2D_7p8dj")
+
+[node name="CloseInventoryButton" type="TouchScreenButton" parent="HBoxContainer"]
+position = Vector2(446, 0)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_3jfos")
+texture_pressed = ExtResource("3_3jfos")
+shape = SubResource("RectangleShape2D_4yrs6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
