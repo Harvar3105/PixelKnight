@@ -1,7 +1,8 @@
 extends Control
 
 var inventoryCellsAmount = 25
-@onready var gridContainer = get_node("ScrollContainer/GridContainer")
+@onready var gridContainer = $"ScrollContainer/GridContainer"
+
 
 func _ready():
 	gridContainer.generate_items(inventoryCellsAmount)
@@ -11,6 +12,7 @@ func _ready():
 func _on_close_inventory_button_pressed():
 	get_tree().paused = false
 	hide()
+
 
 func recieve_inventory_cells_amount(amount):
 	inventoryCellsAmount = amount

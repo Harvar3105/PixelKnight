@@ -1,13 +1,13 @@
 extends Node2D
 
 
-@onready var healthBar = get_node("ControlLayout/TopLeftIndicators/HealthBar")
-@onready var playerHPLabel = get_node("ControlLayout/TopLeftIndicators/HealthBar/PlayerHP")
-@onready var expBar = get_node("ControlLayout/TopLeftIndicators/LevelUpBar")
-@onready var playerLevelLabel = get_node("ControlLayout/TopLeftIndicators/LevelFont/Label")
-@onready var player = get_node("Player")
-@onready var pauseMenu = get_node("ControlLayout/PauseMenu")
-@onready var inventoryMenu = get_node("ControlLayout/InventoryMenu")
+@onready var HealthBar = get_node("ControlLayout/TopLeftIndicators/HealthBar")
+@onready var PlayerHPLabel = get_node("ControlLayout/TopLeftIndicators/HealthBar/PlayerHP")
+@onready var ExpBar = get_node("ControlLayout/TopLeftIndicators/LevelUpBar")
+@onready var PlayerLevelLabel = get_node("ControlLayout/TopLeftIndicators/LevelFont/Label")
+@onready var Player = get_node("Player")
+@onready var PauseMenu = get_node("ControlLayout/PauseMenu")
+@onready var InventoryMenu = get_node("ControlLayout/InventoryMenu")
 
 
 func _ready():
@@ -24,18 +24,18 @@ func _process(delta):
 
 
 func change_health_bar_value():
-	healthBar.value = player.get_health()
-	playerHPLabel.set_hp(player.get_health())
+	HealthBar.value = Player.get_health()
+	PlayerHPLabel.set_hp(Player.get_health())
 
 func change_exp_bar_value():
-	expBar.value = player.get_exp()
-	expBar.max_value = player.get_max_exp()
-	playerLevelLabel.set_level(player.get_level())
+	ExpBar.value = Player.get_exp()
+	ExpBar.max_value = Player.get_max_exp()
+	PlayerLevelLabel.set_level(Player.get_level())
 
 func pause_game():
-	pauseMenu.set_visible(true)
+	PauseMenu.set_visible(true)
 	get_tree().paused = true
 
 func open_inventory():
-	inventoryMenu.set_visible(true)
+	InventoryMenu.set_visible(true)
 	get_tree().paused = true

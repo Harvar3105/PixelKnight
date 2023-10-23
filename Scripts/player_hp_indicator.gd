@@ -1,9 +1,9 @@
 extends Label
 
-var HP
+var hp
 
 func _process(delta):
-	text = str(HP)
+	text = str(hp)
 
 func set_hp(amount):
-	HP = amount
+	hp = amount

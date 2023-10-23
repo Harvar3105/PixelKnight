@@ -1,9 +1,9 @@
 extends Label
 
-var LEVEL
+var level
 
 func _process(delta):
-	text = LEVEL
+	text = level
 
 func set_level(amount):
-	LEVEL = str(amount)
+	level = str(amount)

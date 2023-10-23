@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdbmun0mwn8bq"]
 
-[ext_resource type="Script" path="res://Scripts/PauseMenu.gd" id="1_wqe0t"]
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_1mqgv"]
 [ext_resource type="Texture2D" uid="uid://3h2wdcy20jil" path="res://Buttons/ContinueButton.png" id="2_vrsqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jgdhi"]
@@ -21,7 +21,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_wqe0t")
+script = ExtResource("1_1mqgv")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

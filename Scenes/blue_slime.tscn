@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/blue_slime.gd" id="1_6rxn2"]
 [ext_resource type="Texture2D" uid="uid://ty6myklcc2b2" path="res://Characters/Slime_Blue-Sheet.png" id="1_ph8j2"]
-[ext_resource type="Script" path="res://Scripts/AlertDMGBlueSlime.gd" id="3_ixhil"]
+[ext_resource type="Script" path="res://Scripts/damage_alert_blue_slime.gd" id="3_qeqnq"]
 [ext_resource type="Theme" uid="uid://dmiibo8sbj620" path="res://Themes/SlimeHealthBar.tres" id="4_c17tu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jr478"]
@@ -96,7 +96,7 @@ shape = SubResource("SegmentShape2D_rq5a7")
 shape = SubResource("SegmentShape2D_shwhd")
 
 [node name="AlertDMG" type="Area2D" parent="."]
-script = ExtResource("3_ixhil")
+script = ExtResource("3_qeqnq")
 
 [node name="RangeDMG" type="CollisionShape2D" parent="AlertDMG"]
 shape = SubResource("RectangleShape2D_5sfd5")

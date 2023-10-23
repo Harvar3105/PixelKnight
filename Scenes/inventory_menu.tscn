@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhhc5c1evrb1y"]
 
-[ext_resource type="Script" path="res://Scripts/InventoryMenu.gd" id="1_ry0i3"]
-[ext_resource type="Script" path="res://Scripts/InventoryGridContainer.gd" id="2_6ydrt"]
+[ext_resource type="Script" path="res://Scripts/inventory_menu.gd" id="1_ehp2k"]
+[ext_resource type="Script" path="res://Scripts/inventory_grid_container.gd" id="2_ybryg"]
 [ext_resource type="Texture2D" uid="uid://doy2gp68kttpw" path="res://Buttons/InventoryCloseButton.png" id="3_3jfos"]
 [ext_resource type="Texture2D" uid="uid://4ljkbaspjtly" path="res://Buttons/InfoInventoryButton.png" id="3_bm1yb"]
 [ext_resource type="Texture2D" uid="uid://bar3m7x5h0afs" path="res://Buttons/ItemsInventoryButton.png" id="3_xbrsx"]
@@ -29,7 +29,7 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ry0i3")
+script = ExtResource("1_ehp2k")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]
@@ -52,7 +52,7 @@ vertical_scroll_mode = 3
 [node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
 layout_mode = 2
 columns = 5
-script = ExtResource("2_6ydrt")
+script = ExtResource("2_ybryg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

@@ -4,28 +4,32 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 const DMG = 5
-var HEALTH = 100
-var LEVEL = 0
-var EXP = 0
-var MAX_EXP_FOR_LVL_UP = 100
-var INVENTORY_CAPACITY = 10
-var INVENTORY = []
-var EQUIPMENT = { "helmet": null, "armor": null, "weapon": null}
+var health = 100
+var level = 0
+var exp = 0
+var max_exp_for_level_up = 100
+var inventory_capacity = 10
+var inventory = []
+var equipment = { 
+	"helmet": null,
+	"armor": null,
+	"weapon": null
+	}
 
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var animations = get_node("CollisionShape2D/PlayerAnimation")
-@onready var dmgArea = get_node("AlertDMG/AreaDMG")
-@onready var helmet = $"CollisionShape2D/Helmet"
-@onready var body = $"CollisionShape2D/Body"
-@onready var weapon = $"CollisionShape2D/Sword"
+@onready var Animations = $"CollisionShape2D/PlayerAnimation"
+@onready var DmgArea = $"AlertDMG/AreaDMG"
+@onready var Helmet = $"CollisionShape2D/Helmet"
+@onready var Body = $"CollisionShape2D/Body"
+@onready var Weapon = $"CollisionShape2D/Sword"
 
 func _ready():
-	INVENTORY.resize(INVENTORY_CAPACITY)
+	inventory.resize(inventory_capacity)
 
 func _physics_process(delta):
-	animations.play("Idle")
+	Animations.play("Idle")
 	
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -39,61 +43,61 @@ func _physics_process(delta):
 		velocity.x = 0
 	
 	if direction == -1:
-		helmet.flip_h = true
-		body.flip_h = true
-		weapon.flip_h = true
-		weapon.position.x = -11
-		dmgArea.position.x = -32
+		Helmet.flip_h = true
+		Body.flip_h = true
+		Weapon.flip_h = true
+		Weapon.position.x = -11
+		DmgArea.position.x = -32
 
 	elif direction == 1:
-		helmet.flip_h = false
-		body.flip_h = false
-		weapon.flip_h = false
-		weapon.position.x = 11
-		dmgArea.position.x = 32
+		Helmet.flip_h = false
+		Body.flip_h = false
+		Weapon.flip_h = false
+		Weapon.position.x = 11
+		DmgArea.position.x = 32
 	
 	die()
 	
 	move_and_slide()
 
 func level_up():
-	if (EXP >= MAX_EXP_FOR_LVL_UP):
-		EXP -= MAX_EXP_FOR_LVL_UP
-		MAX_EXP_FOR_LVL_UP = round(MAX_EXP_FOR_LVL_UP * 1.3)
-		LEVEL += 1
+	if (exp >= max_exp_for_level_up):
+		exp -= max_exp_for_level_up
+		max_exp_for_level_up = round(max_exp_for_level_up * 1.3)
+		level += 1
 
 func get_health():
-	return HEALTH
+	return health
 
 func get_dmg():
 	return DMG
 
 func get_level():
-	return LEVEL
+	return level
 
 func get_exp():
-	return EXP
+	return exp
 
 func get_max_exp():
-	return MAX_EXP_FOR_LVL_UP
+	return max_exp_for_level_up
 
 func die():
-	if (HEALTH <= 0):
+	if (health <= 0):
 		queue_free();
 
 func recieve_dmg(amount):
-	HEALTH -= amount
+	health -= amount
 
 func recieve_exp(amount):
-	EXP += amount
+	exp += amount
 	level_up()
 
 func recieve_hp(amount):
-	if ((HEALTH + amount) >= 100):
-		HEALTH = 100
+	if ((health + amount) >= 100):
+		health = 100
 	else:
-		HEALTH += amount
+		health += amount
 
 func change_inventory_size(amount):
-	INVENTORY_CAPACITY = amount
-	INVENTORY.resize(amount)
+	inventory_capacity = amount
+	inventory.resize(amount)
