@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://ci8o02nhjmtrv"]
+[gd_scene load_steps=9 format=3 uid="uid://ci8o02nhjmtrv"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_a3t3h"]
-[ext_resource type="PackedScene" uid="uid://4xr4s3a7sxpo" path="res://Scenes/Player.tscn" id="1_rh7ys"]
+[ext_resource type="PackedScene" uid="uid://4xr4s3a7sxpo" path="res://Characters/Player.tscn" id="1_rh7ys"]
 [ext_resource type="PackedScene" uid="uid://cu42p5iq5tka6" path="res://Scenes/level_test.tscn" id="2_dxqwh"]
-[ext_resource type="PackedScene" uid="uid://bdbmun0mwn8bq" path="res://Scenes/pause_menu.tscn" id="6_tf24t"]
-[ext_resource type="PackedScene" uid="uid://bhhc5c1evrb1y" path="res://Scenes/inventory_menu.tscn" id="7_4jnk5"]
-[ext_resource type="PackedScene" uid="uid://yitekftqvsw1" path="res://Scenes/control_layout.tscn" id="7_eysaw"]
-[ext_resource type="PackedScene" uid="uid://dqls41ixt6eof" path="res://Scenes/blue_slime.tscn" id="10_chwoq"]
+[ext_resource type="PackedScene" uid="uid://bdbmun0mwn8bq" path="res://UI/pause_menu.tscn" id="6_tf24t"]
+[ext_resource type="PackedScene" uid="uid://bhhc5c1evrb1y" path="res://UI/inventory_menu.tscn" id="7_4jnk5"]
+[ext_resource type="PackedScene" uid="uid://ct6egqalgrxcv" path="res://UI/control_layout.tscn" id="7_eysaw"]
+[ext_resource type="PackedScene" uid="uid://bxxlldmlyxg15" path="res://UI/death_screen.tscn" id="8_lxjr2"]
+[ext_resource type="PackedScene" uid="uid://dqls41ixt6eof" path="res://Characters/blue_slime.tscn" id="10_chwoq"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_a3t3h")
@@ -37,3 +38,5 @@ editor_draw_drag_margin = true
 [node name="PauseMenu" parent="ControlLayout" instance=ExtResource("6_tf24t")]
 
 [node name="InventoryMenu" parent="ControlLayout" instance=ExtResource("7_4jnk5")]
+
+[node name="DeathScreen" parent="ControlLayout" instance=ExtResource("8_lxjr2")]
