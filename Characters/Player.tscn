@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://4xr4s3a7sxpo"]
+[gd_scene load_steps=12 format=3 uid="uid://4xr4s3a7sxpo"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_n7hnu"]
 [ext_resource type="Texture2D" uid="uid://b7uamyt4jnnhh" path="res://Materials/Items/IronHelmet-Sheet.png" id="2_tm8la"]
 [ext_resource type="Texture2D" uid="uid://clq5rty2medp0" path="res://Materials/Items/IronBody-Sheet.png" id="3_8jpk7"]
 [ext_resource type="Texture2D" uid="uid://cb0b17fns8w0c" path="res://Materials/Items/IronSword.png" id="4_p8i2c"]
+[ext_resource type="Texture2D" uid="uid://d4i7ngkymtdu1" path="res://Materials/Animation/SwordSwing.png" id="5_cb43l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04hi0"]
 size = Vector2(44, 68)
@@ -120,17 +121,27 @@ _data = {
 [sub_resource type="GDScript" id="GDScript_ssuf2"]
 script/source = "extends Area2D
 
-@onready var damage = get_parent().get_dmg()
+@onready var Damage = get_parent().get_dmg()
+@onready var Weapon = get_parent().get_node(\"CollisionShape2D/Sword\")
+@onready var WeaponAnimation = get_parent().get_node(\"CollisionShape2D/SwordAnimation\")
 var targetEntity = null
 
 var canHit = true
 
 func _input(event):
-	if event.is_action_pressed(\"ui_hit\") && targetEntity != null && canHit:
-		targetEntity.recieve_dmg(damage)
-		canHit = false
-		await get_tree().create_timer(0.5).timeout
-		canHit = true
+	if not event.is_action_pressed(\"ui_hit\") or canHit == false:
+		return
+	print(\"hit\")
+	Weapon.hide()
+	WeaponAnimation.show()
+	canHit = false
+	if event.is_action_pressed(\"ui_hit\") && targetEntity != null:
+		targetEntity.receive_dmg(Damage)
+	await get_tree().create_timer(0.5).timeout
+	Weapon.show()
+	WeaponAnimation.hide()
+	canHit = true
+
 
 func _on_body_entered(body):
 	if body.name == \"BlueSlime\":
@@ -165,6 +176,11 @@ hframes = 2
 [node name="Sword" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(11, 22)
 texture = ExtResource("4_p8i2c")
+
+[node name="SwordAnimation" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(51, 10)
+scale = Vector2(1, 1.03125)
+texture = ExtResource("5_cb43l")
 
 [node name="PlayerAnimation" type="AnimationPlayer" parent="CollisionShape2D"]
 libraries = {

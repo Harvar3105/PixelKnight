@@ -26,9 +26,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var Helmet = $"CollisionShape2D/Helmet"
 @onready var Body = $"CollisionShape2D/Body"
 @onready var Weapon = $"CollisionShape2D/Sword"
+@onready var WeaponAnimation = $"CollisionShape2D/SwordAnimation"
 
 func _ready():
 	inventory.resize(inventory_capacity)
+	WeaponAnimation.hide()
+	load_player()
 
 func _physics_process(delta):
 	Animations.play("Idle")
@@ -48,19 +51,41 @@ func _physics_process(delta):
 		Helmet.flip_h = true
 		Body.flip_h = true
 		Weapon.flip_h = true
+		WeaponAnimation.flip_h = true
 		Weapon.position.x = -11
 		DmgArea.position.x = -32
+		WeaponAnimation.position.x = -40
 
 	elif direction == 1:
 		Helmet.flip_h = false
 		Body.flip_h = false
 		Weapon.flip_h = false
+		WeaponAnimation.flip_h = false
 		Weapon.position.x = 11
 		DmgArea.position.x = 32
+		WeaponAnimation.position.x = 40
 	
 	die()
 	
 	move_and_slide()
+
+
+func load_player():
+	if FileAccess.file_exists("res://Save/Save.txt"):
+		var file = FileAccess.open("res://Save/Save.txt", FileAccess.READ)
+		if file.get_length() == 0: return
+		var json = JSON.new()
+		json.parse(file.get_as_text())
+		var data = json.get_data()
+		equipment = data["equipment"]
+		exp = data["exp"]
+		gold = data["gold"]
+		health = data["hp"]
+		inventory = data["inventory"].split(";")
+		level = data["level"]
+		max_exp_for_level_up = data["max_exp"]
+		wood = data["wood"]
+
 
 func level_up():
 	if (exp >= max_exp_for_level_up):
@@ -94,16 +119,16 @@ func die():
 		queue_free();
 
 
-func recieve_dmg(amount):
+func receive_dmg(amount):
 	health -= amount
 
 
-func recieve_exp(amount):
+func receive_exp(amount):
 	exp += amount
 	level_up()
 
 
-func recieve_hp(amount):
+func receive_hp(amount):
 	if ((health + amount) >= 100):
 		health = 100
 	else:
@@ -115,25 +140,25 @@ func change_inventory_size(amount):
 	inventory.resize(amount)
 
 
+func get_inventory():
+	return ";".join(inventory)
+
+
+func get_equipment():
+	return equipment
+
+
 func get_gold():
 	return gold
-
-
-func recieve_gold(amount):
-	gold += amount
-
-
-func spend_gold(amount):
-	gold -= amount
 
 
 func get_wood():
 	return wood
 
 
-func recieve_wood(amount):
-	wood += amount
-
-
-func spend_wood(amount):
-	wood -= amount
+func receive_resource(type, amount):
+	match type:
+		"gold":
+			gold += amount
+		"wood":
+			wood += amount

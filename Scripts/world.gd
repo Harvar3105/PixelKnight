@@ -12,16 +12,21 @@ extends Node2D
 @onready var PlayerWoodCounter = $ControlLayout/TopLeftIndicators/Wood/WoodCounter
 @onready var DeathScreen = $ControlLayout/DeathScreen
 
+var can_call_death_screen = true
 
 func _ready():
 	Engine.max_fps = 60
 
 
 func _process(delta):
-	change_health_bar_value()
-	change_exp_bar_value()
-	change_player_gold_counter()
-	change_player_wood_counter()
+	if not check_players_death():
+		change_health_bar_value()
+		change_exp_bar_value()
+		change_player_gold_counter()
+		change_player_wood_counter()
+	else: if can_call_death_screen:
+		can_call_death_screen = false
+		show_death_screen()
 	
 	if Input.is_action_pressed("ui_pause"):
 		pause_game()
@@ -29,9 +34,15 @@ func _process(delta):
 		open_inventory()
 
 
+func check_players_death():
+	if Player == null:
+		return true
+	else: return false
+
 func change_health_bar_value():
 	HealthBar.value = Player.get_health()
 	PlayerHPLabel.set_hp(Player.get_health())
+
 
 
 func change_exp_bar_value():

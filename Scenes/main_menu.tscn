@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://tywqfc0ilf7c"]
 
-[ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_g08d7"]
-[ext_resource type="Texture2D" uid="uid://r8kaeel5pq44" path="res://Materials/UI/QuitButton128.png" id="2_1qagx"]
-[ext_resource type="Texture2D" uid="uid://cicseekdrj22t" path="res://Materials/UI/PlayButton128.png" id="3_g167m"]
+[ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_dhskh"]
+[ext_resource type="Texture2D" uid="uid://r8kaeel5pq44" path="res://Materials/UI/QuitButton128.png" id="2_soyke"]
+[ext_resource type="Texture2D" uid="uid://cicseekdrj22t" path="res://Materials/UI/PlayButton128.png" id="3_xo175"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83vji"]
 size = Vector2(128, 64)
@@ -11,7 +11,7 @@ size = Vector2(128, 64)
 size = Vector2(128, 64)
 
 [node name="main" type="Node2D"]
-script = ExtResource("1_g08d7")
+script = ExtResource("1_dhskh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -31,15 +31,15 @@ grow_vertical = 2
 [node name="Quit" type="TouchScreenButton" parent="CanvasLayer/CenterContainer"]
 position = Vector2(1, 194)
 scale = Vector2(3, 3)
-texture_normal = ExtResource("2_1qagx")
-texture_pressed = ExtResource("2_1qagx")
+texture_normal = ExtResource("2_soyke")
+texture_pressed = ExtResource("2_soyke")
 shape = SubResource("RectangleShape2D_83vji")
 
 [node name="Play" type="TouchScreenButton" parent="CanvasLayer/CenterContainer"]
 position = Vector2(1, 1)
 scale = Vector2(3, 3)
-texture_normal = ExtResource("3_g167m")
-texture_pressed = ExtResource("3_g167m")
+texture_normal = ExtResource("3_xo175")
+texture_pressed = ExtResource("3_xo175")
 shape = SubResource("RectangleShape2D_n0y3l")
 
 [connection signal="pressed" from="CanvasLayer/CenterContainer/Quit" to="." method="_on_quit_pressed"]

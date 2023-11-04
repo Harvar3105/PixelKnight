@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq6hf4mq6v28m"]
+
+[ext_resource type="Script" path="res://Scripts/Objects/ExitDoor.gd" id="1_o7ten"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjvgi"]
+size = Vector2(80, 80)
+
+[node name="ExitDoor" type="Node2D"]
+script = ExtResource("1_o7ten")
+
+[node name="DoorAlert" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorAlert"]
+shape = SubResource("RectangleShape2D_cjvgi")
+
+[node name="Panel" type="Panel" parent="DoorAlert"]
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="body_entered" from="DoorAlert" to="." method="_on_door_alert_body_entered"]

@@ -1,0 +1,14 @@
+{
+	"equipment": {
+		"armor": null,
+		"helmet": null,
+		"weapon": null
+	},
+	"exp": 6,
+	"gold": 99,
+	"hp": 40,
+	"inventory": "<null>;<null>;<null>;<null>;<null>;<null>;<null>;<null>;<null>;<null>",
+	"level": 4,
+	"max_exp": 286,
+	"wood": 28
+}

@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bxxlldmlyxg15"]
+[gd_scene load_steps=6 format=3 uid="uid://bxxlldmlyxg15"]
 
 [ext_resource type="Script" path="res://Scripts/UI/death_screen.gd" id="1_jceac"]
+[ext_resource type="Texture2D" uid="uid://3h2wdcy20jil" path="res://Materials/UI/ContinueButton.png" id="2_cpmt0"]
+[ext_resource type="Texture2D" uid="uid://r8kaeel5pq44" path="res://Materials/UI/QuitButton128.png" id="3_d4y05"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hp763"]
+size = Vector2(128, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1yvj"]
+size = Vector2(128, 64)
 
 [node name="death_screen" type="Control"]
 process_mode = 2
@@ -11,3 +19,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_jceac")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 500.0
+offset_top = 250.0
+offset_right = 756.0
+offset_bottom = 535.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 500.0
+offset_top = 250.0
+offset_right = 756.0
+offset_bottom = 535.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "DEAD"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="TouchScreenButton" parent="VBoxContainer"]
+position = Vector2(0, 28)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("2_cpmt0")
+texture_pressed = ExtResource("2_cpmt0")
+shape = SubResource("RectangleShape2D_hp763")
+action = "ui_continue"
+
+[node name="Quit" type="TouchScreenButton" parent="VBoxContainer"]
+position = Vector2(0, 155)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("3_d4y05")
+texture_pressed = ExtResource("3_d4y05")
+shape = SubResource("RectangleShape2D_v1yvj")
+
+[connection signal="pressed" from="VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

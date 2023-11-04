@@ -10,7 +10,7 @@ func _on_body_entered(body):
 		target_entity = body
 		can_be_damaged = true
 		while (can_be_damaged):
-			target_entity.recieve_dmg(Damage)
+			target_entity.receive_dmg(Damage)
 			await get_tree().create_timer(0.5).timeout
 
 

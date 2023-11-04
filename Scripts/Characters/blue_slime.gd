@@ -10,6 +10,7 @@ const EXP = 125
 var health = 10
 var damage = 10
 var gold = randi() % 16 + 10
+var wood = randi() % 2 + 5
 var wander_state = true
 var target_entity = null
 
@@ -23,8 +24,9 @@ func _physics_process(delta):
 	
 	if health <= 0:
 		HealthBar.queue_free()
-		target_entity.recieve_exp(EXP)
-		target_entity.recieve_gold(gold)
+		target_entity.receive_exp(EXP)
+		target_entity.receive_resource("gold", gold)
+		target_entity.receive_resource("wood", wood)
 		queue_free()
 	
 	if !wander_state:
@@ -59,5 +61,5 @@ func _on_alert_right_body_entered(body):
 func get_dmg():
 	return damage
 	
-func recieve_dmg(amount):
+func receive_dmg(amount):
 	health -= amount
