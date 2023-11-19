@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu42p5iq5tka6"]
+[gd_scene load_steps=10 format=3 uid="uid://cu42p5iq5tka6"]
 
 [ext_resource type="Texture2D" uid="uid://qe7qiawapoho" path="res://Materials/Wood_Planks.png" id="1_h731q"]
+[ext_resource type="Script" path="res://Scripts/levels/level_test.gd" id="1_tdc7e"]
 [ext_resource type="Texture2D" uid="uid://cnl1n2nqchxcc" path="res://Materials/PurpleBricks.png" id="2_ou4o2"]
 [ext_resource type="Texture2D" uid="uid://c7lq3sf4j0382" path="res://Materials/Window.png" id="3_rbqkf"]
+[ext_resource type="PackedScene" uid="uid://dqls41ixt6eof" path="res://Characters/blue_slime.tscn" id="4_hu8ug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_31peh"]
 size = Vector2(1200, 40)
@@ -17,6 +19,7 @@ size = Vector2(1200, 40)
 size = Vector2(40, 650)
 
 [node name="Level_Test" type="Node2D"]
+script = ExtResource("1_tdc7e")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_left = -811.0
@@ -110,3 +113,9 @@ stretch_mode = 1
 position = Vector2(809, 178)
 scale = Vector2(2, 2.5)
 texture = ExtResource("3_rbqkf")
+
+[node name="BlueSlime" parent="." instance=ExtResource("4_hu8ug")]
+position = Vector2(916, 562)
+scale = Vector2(1.5, 1.5)
+
+[connection signal="tree_exited" from="BlueSlime" to="." method="_on_blue_slime_tree_exited"]

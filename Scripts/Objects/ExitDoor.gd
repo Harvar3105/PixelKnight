@@ -13,7 +13,6 @@ func _on_door_alert_body_entered(body):
 func save_player():
 	var save_game = FileAccess.open("res://Save/Save.txt", FileAccess.WRITE)
 	var data = {}
-	data["hp"] = Player.get_health()
 	data["exp"] = Player.get_exp()
 	data["level"] = Player.get_level()
 	data["max_exp"] = Player.get_max_exp()

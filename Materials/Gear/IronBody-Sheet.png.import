@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7uamyt4jnnhh"
-path="res://.godot/imported/IronHelmet-Sheet.png-f8ea356e3a27a7bb883fe3da2ce7e311.ctex"
+uid="uid://clq5rty2medp0"
+path="res://.godot/imported/IronBody-Sheet.png-849cb632a7c3bd4062a9229732ab3d1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Items/IronHelmet-Sheet.png"
-dest_files=["res://.godot/imported/IronHelmet-Sheet.png-f8ea356e3a27a7bb883fe3da2ce7e311.ctex"]
+source_file="res://Materials/Gear/IronBody-Sheet.png"
+dest_files=["res://.godot/imported/IronBody-Sheet.png-849cb632a7c3bd4062a9229732ab3d1f.ctex"]
 
 [params]
 

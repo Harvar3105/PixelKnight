@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://4xr4s3a7sxpo"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/player.gd" id="1_n7hnu"]
-[ext_resource type="Texture2D" uid="uid://b7uamyt4jnnhh" path="res://Materials/Items/IronHelmet-Sheet.png" id="2_tm8la"]
-[ext_resource type="Texture2D" uid="uid://clq5rty2medp0" path="res://Materials/Items/IronBody-Sheet.png" id="3_8jpk7"]
-[ext_resource type="Texture2D" uid="uid://cb0b17fns8w0c" path="res://Materials/Items/IronSword.png" id="4_p8i2c"]
+[ext_resource type="Texture2D" uid="uid://b7uamyt4jnnhh" path="res://Materials/Gear/IronHelmet-Sheet.png" id="2_iomyn"]
+[ext_resource type="Texture2D" uid="uid://clq5rty2medp0" path="res://Materials/Gear/IronBody-Sheet.png" id="3_r3qqa"]
+[ext_resource type="Texture2D" uid="uid://cb0b17fns8w0c" path="res://Materials/Gear/IronSword.png" id="4_474xw"]
 [ext_resource type="Texture2D" uid="uid://d4i7ngkymtdu1" path="res://Materials/Animation/SwordSwing.png" id="5_cb43l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_04hi0"]
@@ -121,7 +121,7 @@ _data = {
 [sub_resource type="GDScript" id="GDScript_ssuf2"]
 script/source = "extends Area2D
 
-@onready var Damage = get_parent().get_dmg()
+@onready var Parent = get_parent()
 @onready var Weapon = get_parent().get_node(\"CollisionShape2D/Sword\")
 @onready var WeaponAnimation = get_parent().get_node(\"CollisionShape2D/SwordAnimation\")
 var targetEntity = null
@@ -129,6 +129,7 @@ var targetEntity = null
 var canHit = true
 
 func _input(event):
+	var damage = Parent.get_dmg()
 	if not event.is_action_pressed(\"ui_hit\") or canHit == false:
 		return
 	print(\"hit\")
@@ -136,7 +137,7 @@ func _input(event):
 	WeaponAnimation.show()
 	canHit = false
 	if event.is_action_pressed(\"ui_hit\") && targetEntity != null:
-		targetEntity.receive_dmg(Damage)
+		targetEntity.receive_dmg(damage)
 	await get_tree().create_timer(0.5).timeout
 	Weapon.show()
 	WeaponAnimation.hide()
@@ -165,17 +166,17 @@ shape = SubResource("RectangleShape2D_04hi0")
 
 [node name="Helmet" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(0, -12)
-texture = ExtResource("2_tm8la")
+texture = ExtResource("2_iomyn")
 hframes = 2
 
 [node name="Body" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(0, 22)
-texture = ExtResource("3_8jpk7")
+texture = ExtResource("3_r3qqa")
 hframes = 2
 
 [node name="Sword" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(11, 22)
-texture = ExtResource("4_p8i2c")
+texture = ExtResource("4_474xw")
 
 [node name="SwordAnimation" type="Sprite2D" parent="CollisionShape2D"]
 position = Vector2(51, 10)

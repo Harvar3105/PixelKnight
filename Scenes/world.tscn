@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ci8o02nhjmtrv"]
+[gd_scene load_steps=9 format=3 uid="uid://ci8o02nhjmtrv"]
 
 [ext_resource type="Script" path="res://Scripts/world.gd" id="1_a3t3h"]
 [ext_resource type="PackedScene" uid="uid://4xr4s3a7sxpo" path="res://Characters/Player.tscn" id="1_rh7ys"]
@@ -8,15 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://ct6egqalgrxcv" path="res://UI/control_layout.tscn" id="7_eysaw"]
 [ext_resource type="PackedScene" uid="uid://bxxlldmlyxg15" path="res://UI/death_screen.tscn" id="8_lxjr2"]
 [ext_resource type="PackedScene" uid="uid://dq6hf4mq6v28m" path="res://Scenes/exit_door.tscn" id="9_ndgmw"]
-[ext_resource type="PackedScene" uid="uid://dqls41ixt6eof" path="res://Characters/blue_slime.tscn" id="10_chwoq"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_a3t3h")
 
 [node name="LevelTest" parent="." instance=ExtResource("2_dxqwh")]
-
-[node name="BlueSlime" parent="." instance=ExtResource("10_chwoq")]
-position = Vector2(1016.73, 577.565)
 
 [node name="Player" parent="." instance=ExtResource("1_rh7ys")]
 position = Vector2(446, 530)

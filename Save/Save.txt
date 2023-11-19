@@ -4,11 +4,10 @@
 		"helmet": null,
 		"weapon": null
 	},
-	"exp": 6,
-	"gold": 99,
-	"hp": 40,
-	"inventory": "<null>;<null>;<null>;<null>;<null>;<null>;<null>;<null>;<null>;<null>",
-	"level": 4,
-	"max_exp": 286,
-	"wood": 28
+	"exp": 101,
+	"gold": 71,
+	"inventory": "'health_potion'",
+	"level": 3,
+	"max_exp": 220,
+	"wood": 22
 }

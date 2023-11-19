@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb0b17fns8w0c"
-path="res://.godot/imported/IronSword.png-2f04d85cf7dee5aa1df118134297ca87.ctex"
+uid="uid://o3ht7pgl7eqq"
+path="res://.godot/imported/InventoryCellIconRing.png-8c426a7f0a3c26f2eab8b7d7ba4d4615.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Materials/Items/IronSword.png"
-dest_files=["res://.godot/imported/IronSword.png-2f04d85cf7dee5aa1df118134297ca87.ctex"]
+source_file="res://Materials/UI/InventoryCellIconRing.png"
+dest_files=["res://.godot/imported/InventoryCellIconRing.png-8c426a7f0a3c26f2eab8b7d7ba4d4615.ctex"]
 
 [params]
 

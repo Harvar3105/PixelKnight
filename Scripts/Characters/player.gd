@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const DMG = 5
+var dmg = 5
 var health = 100
 var level = 0
 var exp = 0
@@ -13,9 +13,10 @@ var inventory = []
 var gold = 0
 var wood = 0
 var equipment = { 
-	"helmet": null,
 	"armor": null,
-	"weapon": null
+	"weapon": null,
+	"backpack": null,
+	"ring": null
 	}
 
 
@@ -66,7 +67,6 @@ func _physics_process(delta):
 		WeaponAnimation.position.x = 40
 	
 	die()
-	
 	move_and_slide()
 
 
@@ -80,9 +80,9 @@ func load_player():
 		equipment = data["equipment"]
 		exp = data["exp"]
 		gold = data["gold"]
-		health = data["hp"]
 		inventory = data["inventory"].split(";")
 		level = data["level"]
+		dmg += level
 		max_exp_for_level_up = data["max_exp"]
 		wood = data["wood"]
 
@@ -92,6 +92,7 @@ func level_up():
 		exp -= max_exp_for_level_up
 		max_exp_for_level_up = round(max_exp_for_level_up * 1.3)
 		level += 1
+		dmg += 1
 
 
 func get_health():
@@ -99,7 +100,7 @@ func get_health():
 
 
 func get_dmg():
-	return DMG
+	return dmg
 
 
 func get_level():
@@ -162,3 +163,15 @@ func receive_resource(type, amount):
 			gold += amount
 		"wood":
 			wood += amount
+
+
+func receive_item(item):
+	match item:
+		'none':
+			return
+		_:
+			print(item + ' recieved')
+			inventory.append(item)
+
+
+
